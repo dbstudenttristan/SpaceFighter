@@ -4,7 +4,6 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
     mySprite.setPosition(randint(0, 160), randint(0, 120))
 })
-let myEnemy: Sprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -146,7 +145,6 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
-myEnemy.follow(mySprite)
 let mySprite2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -165,6 +163,7 @@ let mySprite2 = sprites.create(img`
     . . b b b b b b b . . . . . . . 
     . . . b b b b . . . . . . . . . 
     `, SpriteKind.Enemy)
+mySprite2.follow(mySprite, 80)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 mySprite2.setFlag(SpriteFlag.StayInScreen, true)
 controller.moveSprite(mySprite)
