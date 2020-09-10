@@ -2,7 +2,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 	
 })
 sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
-    mySprite.setPosition(randint(0, 10), 0)
+    mySprite.setPosition(randint(0, 160), 0)
 })
 let myEnemy: Sprite = null
 let mySprite: Sprite = null
