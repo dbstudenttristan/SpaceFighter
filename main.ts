@@ -2,7 +2,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 	
 })
 sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
-    mySprite.setPosition(randint(0, 160), 0)
+    mySprite.setPosition(randint(0, 160), randint(0, 120))
 })
 let myEnemy: Sprite = null
 let mySprite: Sprite = null
@@ -167,3 +167,4 @@ let mySprite2 = sprites.create(img`
     `, SpriteKind.Enemy)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 mySprite2.setFlag(SpriteFlag.StayInScreen, true)
+controller.moveSprite(mySprite)
