@@ -1,12 +1,36 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    projectile = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . 1 . . . . . . . . 1 . . . 
+        . . . 1 . . . . . . . . 1 . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, mySprite, 50, 50)
+})
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     game.over(false)
 })
 sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
     for (let index = 0; index < 4; index++) {
-        mySprite.destroy()
-        mySprite.setPosition(randint(0, 160), randint(0, 120))
+        myEnemy.setPosition(randint(0, 160), randint(0, 120))
     }
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    myEnemy.destroy()
+})
+let projectile: Sprite = null
+let myEnemy: Sprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -148,7 +172,7 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
-let mySprite2 = sprites.create(img`
+myEnemy = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -166,8 +190,8 @@ let mySprite2 = sprites.create(img`
     . . b b b b b b b . . . . . . . 
     . . . b b b b . . . . . . . . . 
     `, SpriteKind.Enemy)
-mySprite2.follow(mySprite, 80)
+myEnemy.follow(mySprite, 80)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
-mySprite2.setFlag(SpriteFlag.StayInScreen, true)
-mySprite2.setPosition(randint(0, 160), randint(0, 120))
+mySprite.setFlag(SpriteFlag.StayInScreen, true)
+myEnemy.setPosition(randint(0, 160), randint(0, 120))
 controller.moveSprite(mySprite)
