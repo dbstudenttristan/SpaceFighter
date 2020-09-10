@@ -1,5 +1,5 @@
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-	
+    mySprite.destroy()
 })
 sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
     mySprite.setPosition(randint(0, 160), randint(0, 120))
