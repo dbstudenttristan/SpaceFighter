@@ -22,9 +22,8 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
     game.over(false)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    for (let index = 0; index < 4; index++) {
-        myEnemy.setPosition(randint(0, 160), randint(0, 120))
-    }
+    info.player1.changeScoreBy(1)
+    myEnemy.setPosition(randint(0, 160), randint(0, 120))
 })
 let projectile: Sprite = null
 let myEnemy: Sprite = null
@@ -187,8 +186,9 @@ myEnemy = sprites.create(img`
     . . b b b b b b b . . . . . . . 
     . . . b b b b . . . . . . . . . 
     `, SpriteKind.Enemy)
-myEnemy.follow(mySprite, 80)
+myEnemy.follow(mySprite, 70)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 myEnemy.setPosition(randint(0, 160), randint(0, 120))
 controller.moveSprite(mySprite)
+info.setScore(0)
