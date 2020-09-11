@@ -21,13 +21,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     game.over(false)
 })
-sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     for (let index = 0; index < 4; index++) {
         myEnemy.setPosition(randint(0, 160), randint(0, 120))
     }
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    myEnemy.destroy()
 })
 let projectile: Sprite = null
 let myEnemy: Sprite = null
